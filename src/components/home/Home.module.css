@@ -1,0 +1,9 @@
+.logo {
+  height: 5rem;
+  width: 5rem;
+}
+
+.container {
+  max-width: 170rem;
+  margin: 0 auto;
+}

@@ -1,0 +1,31 @@
+.logo {
+  height: 15rem;
+  width: 15rem;
+  position: absolute;
+}
+
+.home {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.pizza-home-img {
+  height: 100vh;
+  width: 100%;
+}
+
+.change-action {
+  font-size: 1rem;
+}
+
+.change-action:hover {
+  cursor: pointer;
+}
