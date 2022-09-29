@@ -1,0 +1,26 @@
+.story-section {
+  padding: 5rem 5rem;
+}
+
+.titolo {
+  color: #b73e1a;
+  font-size: 3.1rem;
+}
+
+.paragrafo {
+  margin-top: 3rem;
+  font-size: 2.5rem;
+}
+
+.container {
+  margin-top: 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.immagine {
+  width: 100%;
+}
