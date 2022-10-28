@@ -1,9 +1,8 @@
+import { useState } from "react";
+import "./App.css";
 import Login from "./components/login/Login";
 import Home from "./components/home/Home";
-import Story from "./components/story/Story";
-import CardPizza from "./components/card-pizza/CardPizza";
-import "./App.css";
-import { useState } from "react";
+import Payment from "components/payment/Payment";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -18,11 +17,12 @@ function App() {
 
   return (
     <div className="App">
-      {!loggedIn ? (
+      {/* {!loggedIn ? (
         <Login login={loginHandler} />
       ) : (
         <Home logout={logoutHandler} />
-      )}
+      )} */}
+      <Payment />
     </div>
   );
 }

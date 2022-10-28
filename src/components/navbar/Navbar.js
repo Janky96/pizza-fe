@@ -2,6 +2,7 @@ import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Toolbar from "@mui/material/Toolbar";
+import { Link, NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
 const Navbar = ({ logout }) => {
@@ -22,15 +23,19 @@ const Navbar = ({ logout }) => {
             className={styles["logo"]}
           />
         </Button>
-        <Stack sx={{ flexDirection: "row", gap: "3rem" }}>
+        <Stack className={styles["nav-bar"]} sx={{ flexDirection: "row", gap: "3rem" }}>
           <Button variant="h4" component="div" sx={{ flexGrow: 1 }}>
-            <h6>Storia</h6>
+            <NavLink to="/story">
+              <h6>Storia</h6>
+            </NavLink>
           </Button>
           <Button variant="h4" component="div" sx={{ flexGrow: 1 }}>
             <h6>Ingredienti</h6>
           </Button>
           <Button variant="h4" component="div" sx={{ flexGrow: 1 }}>
-            <h6>Pizze</h6>
+            <NavLink to="/shop">
+              <h6>Pizze</h6>
+            </NavLink>
           </Button>
           <Button variant="h4" component="div" sx={{ flexGrow: 1 }}>
             <h6>Carrello</h6>

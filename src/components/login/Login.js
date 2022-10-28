@@ -2,11 +2,13 @@ import styles from "./Login.module.css";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useState } from "react";
+import axios from 'axios';
 
 const Login = ({ login }) => {
   const [viewLoginButton, setViewLoginButton] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState(false);
 
   const emailHandler = (event) => {
     setEmail(event.target.value);
@@ -16,6 +18,39 @@ const Login = ({ login }) => {
     setPassword(event.target.value);
   };
 
+  const loginHandler = () => {
+    const url = 'http://localhost:8080/authenticate';
+    axios({
+      method: 'post',
+      url: url,
+      data: {
+        username: email,
+        password: password
+      }
+    }).then(res => {
+      localStorage.setItem("token", res.data.token);
+      if(res.status === 200) {
+        login();
+      }
+    });
+  };
+
+  const registrationHandler = () => {
+    const url = 'http://localhost:8080/register';
+    axios({
+      method: 'post',
+      url: url,
+      data: {
+        username: email,
+        password: password
+      }
+    }).then(res => {
+      if(res.status === 200) {
+        alert("Utenza creata con successo");
+      }
+    });
+  }
+
   return (
     <div className={styles["home"]}>
       <img
@@ -24,7 +59,11 @@ const Login = ({ login }) => {
         className={styles["logo"]}
       />
       <div className={styles["login"]}>
-        <TextField label="Email" onChange={emailHandler} />
+        <TextField
+          label="Email"
+          error={emailError ? "Email non valida" : null}
+          onChange={emailHandler}
+        />
         <TextField
           label="Password"
           type="password"
@@ -34,7 +73,7 @@ const Login = ({ login }) => {
           <Button
             variant="contained"
             sx={{ width: 120, height: 40 }}
-            onClick={login}
+            onClick={loginHandler}
           >
             <h6>Login</h6>
           </Button>
@@ -45,6 +84,7 @@ const Login = ({ login }) => {
               width: 120,
               height: 40,
             }}
+            onClick={registrationHandler}
           >
             <h6>Register</h6>
           </Button>

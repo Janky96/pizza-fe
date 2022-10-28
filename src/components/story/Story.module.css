@@ -3,11 +3,17 @@
 }
 
 .titolo {
-  color: #b73e1a;
-  font-size: 3.1rem;
+  font-family: "Poppins", sans-serif;
+  font-style: italic;
+  font-weight: 200;
+  color: #ed8363;
+  font-size: 4rem;
 }
 
 .paragrafo {
+  font-family: "Poppins", sans-serif;
+  font-style: italic;
+  font-weight: 300;
   margin-top: 3rem;
   font-size: 2.5rem;
 }
