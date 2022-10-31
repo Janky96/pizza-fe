@@ -1,4 +1,24 @@
 .sezione {
-    background-color: #343a40;
-    height: 100vh;
+  background-color: #343a40;
+  height: 100vh;
+}
+
+.icon-container {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  height: 5rem;
+  width: 5rem;
+}
+
+.icon--inactive {
+  filter: grayscale(100%);
+}
+
+.icon:hover {
+  cursor: pointer;
 }
