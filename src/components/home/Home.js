@@ -3,6 +3,7 @@ import Navbar from "../navbar/Navbar";
 import Story from "../story/Story";
 import styles from "./Home.module.css";
 import Shop from "../../pages/Shop";
+import Cart from "pages/Cart";
 
 const Home = ({ logout }) => {
   return (
@@ -15,6 +16,9 @@ const Home = ({ logout }) => {
           </Route>
           <Route path="/story">
             <Story />
+          </Route>
+          <Route path="/cart">
+            <Cart />
           </Route>
         </main>
       </div>

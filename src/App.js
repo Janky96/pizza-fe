@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Login from "./components/login/Login";
 import Home from "./components/home/Home";
-import Payment from "components/payment/Payment";
+import Cart from "pages/Cart";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -22,7 +22,7 @@ function App() {
       ) : (
         <Home logout={logoutHandler} />
       )} */}
-      <Payment />
+      <Cart />
     </div>
   );
 }
