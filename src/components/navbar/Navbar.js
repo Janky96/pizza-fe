@@ -23,14 +23,14 @@ const Navbar = ({ logout }) => {
             className={styles["logo"]}
           />
         </Button>
-        <Stack className={styles["nav-bar"]} sx={{ flexDirection: "row", gap: "3rem" }}>
+        <Stack
+          className={styles["nav-bar"]}
+          sx={{ flexDirection: "row", gap: "3rem" }}
+        >
           <Button variant="h4" component="div" sx={{ flexGrow: 1 }}>
             <NavLink to="/story">
               <h6>Storia</h6>
             </NavLink>
-          </Button>
-          <Button variant="h4" component="div" sx={{ flexGrow: 1 }}>
-            <h6>Ingredienti</h6>
           </Button>
           <Button variant="h4" component="div" sx={{ flexGrow: 1 }}>
             <NavLink to="/shop">
@@ -38,7 +38,9 @@ const Navbar = ({ logout }) => {
             </NavLink>
           </Button>
           <Button variant="h4" component="div" sx={{ flexGrow: 1 }}>
-            <h6>Carrello</h6>
+            <NavLink to="/cart">
+              <h6>Carrello</h6>
+            </NavLink>
           </Button>
         </Stack>
         <Button variant="h4" color="secondary" onClick={logout}>

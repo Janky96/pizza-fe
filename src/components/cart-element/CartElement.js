@@ -14,36 +14,54 @@ const CartElement = ({
   id,
   name,
   image,
-  quantity = 0,
+  price,
+  quantity,
   reduceQuantity,
   addQuantity,
   deletePizza,
 }) => {
+  const reduceQuantityHandler = () => {
+    reduceQuantity(id);
+  };
+
+  const addQuantityHandler = () => {
+    addQuantity(id);
+  };
+
+  const deletePizzaHandler = () => {
+    deletePizza(id);
+  };
+
   return (
     <Card sx={{ minWidth: 275 }}>
       <Stack direction="row" justifyContent="space-between">
         <CardMedia
           component="img"
-          image={require("images/pizze/margherita.jpg")}
-          // image={require(`images/pizze/${name}.jpg`)}
+          // image={require("images/pizze/margherita.jpg")}
+          image={require(`images/pizze/${image}.jpg`)}
           alt={image}
           sx={{ height: "8rem", width: "8rem" }}
         />
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="#000" gutterBottom>
-            Margherita
             {name}
+          </Typography>
+          <Typography sx={{ fontSize: 14 }} color="#000" gutterBottom>
+            {price}
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" onClick={reduceQuantity}>
+          <Button size="small" onClick={reduceQuantityHandler}>
             <RemoveIcon />
           </Button>
-          <span>{quantity}</span>
-          <Button size="small" onClick={addQuantity}>
+          <Typography sx={{ fontSize: 14 }} color="#000" gutterBottom>
+            {quantity}
+          </Typography>
+
+          <Button size="small" onClick={addQuantityHandler}>
             <AddIcon />
           </Button>
-          <Button size="small" onClick={deletePizza}>
+          <Button size="small" onClick={deletePizzaHandler}>
             <DeleteIcon />
           </Button>
         </CardActions>

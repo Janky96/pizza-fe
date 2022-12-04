@@ -1,14 +1,12 @@
 import styles from "./Login.module.css";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import { Button, TextField, FormControl } from "@mui/material";
 import { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 
 const Login = ({ login }) => {
   const [viewLoginButton, setViewLoginButton] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState(false);
 
   const emailHandler = (event) => {
     setEmail(event.target.value);
@@ -19,37 +17,41 @@ const Login = ({ login }) => {
   };
 
   const loginHandler = () => {
-    const url = 'http://localhost:8080/authenticate';
+    const url = "http://localhost:8080/authenticate";
     axios({
-      method: 'post',
+      method: "post",
       url: url,
       data: {
         username: email,
-        password: password
-      }
-    }).then(res => {
-      localStorage.setItem("token", res.data.token);
-      if(res.status === 200) {
-        login();
-      }
-    });
+        password: password,
+      },
+    })
+      .then((res) => {
+        localStorage.setItem("token", res.data.token);
+        if (res.status === 200) {
+          login();
+        }
+      })
+      .catch((error) => {
+        alert("Dati non corretti");
+      });
   };
 
   const registrationHandler = () => {
-    const url = 'http://localhost:8080/register';
+    const url = "http://localhost:8080/register";
     axios({
-      method: 'post',
+      method: "post",
       url: url,
       data: {
         username: email,
-        password: password
-      }
-    }).then(res => {
-      if(res.status === 200) {
+        password: password,
+      },
+    }).then((res) => {
+      if (res.status === 200) {
         alert("Utenza creata con successo");
       }
     });
-  }
+  };
 
   return (
     <div className={styles["home"]}>
@@ -58,12 +60,8 @@ const Login = ({ login }) => {
         alt="logo"
         className={styles["logo"]}
       />
-      <div className={styles["login"]}>
-        <TextField
-          label="Email"
-          error={emailError ? "Email non valida" : null}
-          onChange={emailHandler}
-        />
+      <FormControl className={styles["login"]}>
+        <TextField label="Email" onChange={emailHandler} />
         <TextField
           label="Password"
           type="password"
@@ -89,13 +87,14 @@ const Login = ({ login }) => {
             <h6>Register</h6>
           </Button>
         )}
+
         <span
           onClick={() => setViewLoginButton(!viewLoginButton)}
           className={styles["change-action"]}
         >
           {viewLoginButton ? "Not registered yet?" : "Already Registered?"}
         </span>
-      </div>
+      </FormControl>
       <img
         src={require("../../images/home.jpg")}
         alt="pizza home"

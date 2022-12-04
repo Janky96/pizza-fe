@@ -3,6 +3,7 @@ import "./App.css";
 import Login from "./components/login/Login";
 import Home from "./components/home/Home";
 import Cart from "pages/Cart";
+import { Redirect } from "react-router-dom";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -17,12 +18,15 @@ function App() {
 
   return (
     <div className="App">
-      {/* {!loggedIn ? (
-        <Login login={loginHandler} />
+      {!loggedIn ? (
+        <>
+          <Redirect to="/shop" />
+          <Login login={loginHandler} />
+        </>
       ) : (
         <Home logout={logoutHandler} />
-      )} */}
-      <Cart />
+      )}
+      {/* <Cart /> */}
     </div>
   );
 }

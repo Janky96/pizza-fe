@@ -8,15 +8,22 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 
 const CardPizza = ({ id, image, name, ingredients, price, addToCart }) => {
-
   const compraHandler = () => {
-    addToCart(id)
-  }
+    addToCart(id, name, image, price);
+  };
 
   return (
-    <Card sx={{ maxWidth: 345, paddingBottom: "1rem", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+    <Card
+      sx={{
+        maxWidth: 345,
+        paddingBottom: "1rem",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+      }}
+    >
       <div>
-        <CardHeader title={`Pizza ${name}`}/>
+        <CardHeader title={`Pizza ${name}`} />
         <CardMedia
           component="img"
           height="194"
@@ -24,21 +31,31 @@ const CardPizza = ({ id, image, name, ingredients, price, addToCart }) => {
           alt={image}
         />
         <CardContent>
-          {ingredients.filter((ingredient) => (ingredient !== "impasto")
-            ).map((ingredient) => {
-              return(
-              <Typography variant="subtitle1" color="text.secondary"
-                sx={{ textAlign: "left"}}>
-                -{ingredient}
-              </Typography>)
-            })
-          }
-          
+          {ingredients
+            .filter((ingredient) => ingredient !== "impasto")
+            .map((ingredient, index) => {
+              return (
+                <Typography
+                  key={index}
+                  variant="subtitle1"
+                  color="text.secondary"
+                  sx={{ textAlign: "left" }}
+                >
+                  -{ingredient}
+                </Typography>
+              );
+            })}
         </CardContent>
       </div>
       <div>
-        <Typography sx={{ fontSize: "20px", textAlign: "left", marginLeft: "20px"}}>€{price}</Typography>
-        <Button variant="contained" onClick={compraHandler}>Compra</Button>
+        <Typography
+          sx={{ fontSize: "20px", textAlign: "left", marginLeft: "20px" }}
+        >
+          €{price}
+        </Typography>
+        <Button variant="contained" onClick={compraHandler}>
+          Compra
+        </Button>
       </div>
     </Card>
   );

@@ -9,11 +9,12 @@ import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
-const Payment = () => {
+const Payment = ({ prezzoFinale, order }) => {
   const metodiDiPagamentoArray = ["maestro", "visa"];
   const [metodiDiPagamentoActive, setMetodiDiPagamentoActive] = useState(
     new Array(metodiDiPagamentoArray.length).fill(false)
   );
+  const [dateValue, setDateValue] = useState("");
 
   const metodoDiPagamentoClickHandler = (index) => {
     let newArray = new Array(metodiDiPagamentoArray.length).fill(false);
@@ -23,6 +24,7 @@ const Payment = () => {
 
   const metodiDiPagamento = metodiDiPagamentoArray.map((metodo, index) => (
     <img
+      key={index}
       className={`${styles["icon"]} ${
         styles[metodiDiPagamentoActive[index] ? "" : "icon--inactive"]
       }`}
@@ -72,12 +74,20 @@ const Payment = () => {
                 label="Date desktop"
                 inputFormat="DD/MM/YYYY"
                 color="white"
+                value={dateValue}
+                onChange={(newValue) => {
+                  setDateValue(newValue);
+                }}
                 renderInput={(params) => (
                   <TextField
                     {...params}
                     color="white"
                     focused
-                    sx={{ input: { color: "#fff" }, svg: { color: "#fff" } }}
+                    sx={{
+                      input: { color: "#fff" },
+                      svg: { color: "#fff" },
+                      fontSize: "1rem",
+                    }}
                   />
                 )}
                 focused
@@ -94,6 +104,7 @@ const Payment = () => {
               }}
               sx={{
                 input: {
+                  /* jshint ignore:start*/
                   color: "#fff",
                   "&[type=number]": {
                     "-moz-appearance": "textfield",
@@ -106,11 +117,27 @@ const Payment = () => {
                     "-webkit-appearance": "none",
                     margin: 0,
                   },
+                  /* jshint ignore:end */
                 },
               }}
             />
           </Box>
-          <Button sx={{ border: "solid 1px #E54E20" }}>Ordina ora</Button>
+          <Typography
+            variant="h4"
+            component="h4"
+            color="#fff"
+            sx={{ paddingTop: "4rem" }}
+          >
+            €{prezzoFinale}
+          </Typography>
+          <Button
+            sx={{ border: "solid 1px #E54E20" }}
+            onClick={() => {
+              order();
+            }}
+          >
+            Ordina ora
+          </Button>
         </Stack>
       )}
     </section>
