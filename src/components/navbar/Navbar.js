@@ -4,6 +4,7 @@ import Stack from "@mui/material/Stack";
 import Toolbar from "@mui/material/Toolbar";
 import { Link, NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
+import { Typography } from "@mui/material";
 
 const Navbar = ({ logout }) => {
   return (
@@ -27,24 +28,29 @@ const Navbar = ({ logout }) => {
           className={styles["nav-bar"]}
           sx={{ flexDirection: "row", gap: "3rem" }}
         >
-          <Button variant="h4" component="div" sx={{ flexGrow: 1 }}>
+          <Button variant="h2" component="div" sx={{ flexGrow: 1 }}>
             <NavLink to="/story">
-              <h6>Storia</h6>
+              <Typography variant="h5">Storia</Typography>
             </NavLink>
           </Button>
-          <Button variant="h4" component="div" sx={{ flexGrow: 1 }}>
+          <Button variant="h2" component="div" sx={{ flexGrow: 1 }}>
             <NavLink to="/shop">
-              <h6>Pizze</h6>
+              <Typography variant="h5">Pizze</Typography>
             </NavLink>
           </Button>
           <Button variant="h4" component="div" sx={{ flexGrow: 1 }}>
             <NavLink to="/cart">
-              <h6>Carrello</h6>
+              <Typography variant="h5">Carrello</Typography>
+            </NavLink>
+          </Button>
+          <Button variant="h4" component="div" sx={{ flexGrow: 1 }}>
+            <NavLink to="/orders">
+              <Typography variant="h5">Ordini</Typography>
             </NavLink>
           </Button>
         </Stack>
         <Button variant="h4" color="secondary" onClick={logout}>
-          <h6>Logout</h6>
+          <Typography variant="h5">Logout</Typography>
         </Button>
       </Toolbar>
     </AppBar>

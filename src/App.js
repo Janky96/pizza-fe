@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./App.css";
 import Login from "./components/login/Login";
 import Home from "./components/home/Home";
-import Cart from "pages/Cart";
 import { Redirect } from "react-router-dom";
 
 function App() {

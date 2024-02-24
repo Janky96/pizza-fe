@@ -5,6 +5,7 @@ import styles from "./Home.module.css";
 import Shop from "../../pages/Shop";
 import Cart from "pages/Cart";
 import { useState } from "react";
+import Orders from "pages/Orders";
 
 const Home = ({ logout }) => {
   const [carrello, setCarrello] = useState([]);
@@ -89,6 +90,9 @@ const Home = ({ logout }) => {
               addQuantity={addQuantity}
               deletePizza={deletePizza}
             />
+          </Route>
+          <Route path="/orders">
+            <Orders />
           </Route>
         </main>
       </div>

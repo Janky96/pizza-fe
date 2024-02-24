@@ -37,7 +37,7 @@ const Payment = ({ prezzoFinale, order }) => {
   ));
 
   return (
-    <section className={styles["sezione"]}>
+    <section className={styles["sezione"]} style={{ textAlign: "center" }}>
       <Typography
         variant="h2"
         component="h2"

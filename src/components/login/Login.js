@@ -16,6 +16,15 @@ const Login = ({ login }) => {
     setPassword(event.target.value);
   };
 
+  const submitHandler = (event) => {
+    event.preventDefault();
+    if (viewLoginButton) {
+      loginHandler();
+    } else {
+      registrationHandler();
+    }
+  };
+
   const loginHandler = () => {
     const url = "http://localhost:8080/authenticate";
     axios({
@@ -60,18 +69,28 @@ const Login = ({ login }) => {
         alt="logo"
         className={styles["logo"]}
       />
-      <FormControl className={styles["login"]}>
-        <TextField label="Email" onChange={emailHandler} />
+      <form
+        className={styles["login"]}
+        onSubmit={(event) => submitHandler(event)}
+      >
+        <TextField
+          label="Email"
+          onChange={emailHandler}
+          inputProps={{ style: { fontSize: "1.6rem" } }} // font size of input text
+          InputLabelProps={{ style: { fontSize: "1.6rem" } }} // font size of input label
+        />
         <TextField
           label="Password"
           type="password"
           onChange={passwordHandler}
+          inputProps={{ style: { fontSize: "1.6rem" } }} // font size of input text
+          InputLabelProps={{ style: { fontSize: "1.6rem" } }} // font size of input label
         />
         {viewLoginButton ? (
           <Button
             variant="contained"
-            sx={{ width: 120, height: 40 }}
-            onClick={loginHandler}
+            sx={{ width: 120, height: 40, fontSize: "2rem" }}
+            type="submit"
           >
             <h6>Login</h6>
           </Button>
@@ -82,7 +101,7 @@ const Login = ({ login }) => {
               width: 120,
               height: 40,
             }}
-            onClick={registrationHandler}
+            type="submit"
           >
             <h6>Register</h6>
           </Button>
@@ -94,7 +113,7 @@ const Login = ({ login }) => {
         >
           {viewLoginButton ? "Not registered yet?" : "Already Registered?"}
         </span>
-      </FormControl>
+      </form>
       <img
         src={require("../../images/home.jpg")}
         alt="pizza home"

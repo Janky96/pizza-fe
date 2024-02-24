@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { BrowserRouter } from "react-router-dom";
+import { CssBaseline } from "@mui/material";
 
 const theme = createTheme({
   palette: {
@@ -23,6 +24,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ThemeProvider theme={theme}>
     <BrowserRouter>
+      <CssBaseline />
       <App />
     </BrowserRouter>
   </ThemeProvider>
